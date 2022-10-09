@@ -11,3 +11,10 @@ repos:
     rev: v0.982
     hooks:
     -   id: mypy
+        args: [--check_untyped_defs, 
+               --show_column_numbers, 
+               --show_error_codes,
+               --disallow_untyped_defs,
+               --no_implicit_optional,
+               --check_untyped_defs,
+               --warn_return_any]
