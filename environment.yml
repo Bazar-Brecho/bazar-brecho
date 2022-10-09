@@ -1,0 +1,5 @@
+name: bazarbrecho
+dependencies:
+  - pip
+  - pip:
+    - -r requirements.txt
