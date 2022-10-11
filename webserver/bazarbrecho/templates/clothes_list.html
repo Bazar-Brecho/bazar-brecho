@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>BAZAR BRECHÓ</title>
+    </head>
+    <body>
+        <h1>BAZAR BRECHÓ</h1>
+        <h2>Lista de Roupas</h2>
+        <ul>
+            {% for item in all_items %}
+            <li>{{ item.content }}
+            <form action="/delete_item/{{item.id}}/" style="display: inline;" method="post">{% csrf_token %}
+            <input type="submit" value="Delete">
+        </form>
+            </li>
+            {% endfor %}
+        </ul>
+
+        <form action="/add_item/" method="post">{% csrf_token %}
+            <input type="text" name="content">
+            <input type="submit" value="Add">
+        </form>
+    </body>
+</html>
