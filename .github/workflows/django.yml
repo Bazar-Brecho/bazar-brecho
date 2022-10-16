@@ -27,4 +27,4 @@ jobs:
         pip install -r requirements.txt
     - name: Run Tests
       run: |
-        python webserver/bazarbrecho/manage.py test
+        cd webserver/bazarbrecho/ && python manage.py test
