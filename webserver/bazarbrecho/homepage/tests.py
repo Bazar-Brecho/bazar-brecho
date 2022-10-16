@@ -9,4 +9,4 @@ def add(a: int, b: int):
 class AddTestCase(TestCase):
     def test_add(self):
         self.assertEqual(add(3, 4), 7)
-        self.assertEqual(add(4, 4), 10)
+        self.assertEqual(add(4, 4), 8)
