@@ -40,8 +40,6 @@ This Project has some usefull pre-commit at ´.pre-commit-config.yaml´. To have
 After that, pre-commit will run the following usefull tools before each of your commits:
 
 1. black (ensure a commum format)
-2. isort (sort imports)
-3. mypy (do a static typecheck)
 
 # Back-End development
 Django-based back-end development details
