@@ -36,4 +36,4 @@ jobs:
       with:
       # Application
         # Minimum allowed code coverage
-        minimum-coverage: 10 # optional, default is 10
+        minimum-coverage: 0 # optional, default is 10
