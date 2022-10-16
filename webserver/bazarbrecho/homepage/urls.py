@@ -17,9 +17,9 @@ from django.urls import path
 from .views import login, home, clothes_list, add_item, delete_item
 
 urlpatterns = [
-    path('login/', login),
-    path('', home),
-    path('clothes_list/', clothes_list),
-    path('add_item/', add_item),
-    path('delete_item/<int:item_id>/', delete_item)
+    path("login/", login),
+    path("", home),
+    path("clothes_list/", clothes_list),
+    path("add_item/", add_item),
+    path("delete_item/<int:item_id>/", delete_item),
 ]
