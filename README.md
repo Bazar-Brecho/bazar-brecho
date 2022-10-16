@@ -41,7 +41,6 @@ After that, pre-commit will run the following usefull tools before each of your 
 
 1. black (ensure a commum format)
 2. isort (sort imports)
-3. mypy (do a static typecheck)
 
 # Back-End development
 Django-based back-end development details
