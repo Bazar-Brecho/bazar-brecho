@@ -35,5 +35,6 @@ jobs:
       uses: dc740/django-coveragepy-github-action@0.9
       with:
       # Application
+        django-app: 'bazarbrecho'
         # Minimum allowed code coverage
         minimum-coverage: 0 # optional, default is 10
