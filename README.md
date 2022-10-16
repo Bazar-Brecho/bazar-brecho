@@ -12,10 +12,14 @@ which can be used to create/update your enviroment.
 Type the following commands at your shell to create/update using conda.
 
 Create: 
-´conda env create -f environment.yml´
+```
+conda env create -f environment.yml
+```
 
 Update:
-´conda env update -f environment.yml´
+```
+conda env update -f environment.yml
+```
 
 After that, you can activate your conda environment using ´conda activate bazarbrecho´
 
@@ -24,7 +28,7 @@ Type the following commands at your shell to create/update using venv.
 
 At directory where you want to have your environment.
 Create:
-Unix/MacOS: ´python3 -m venv env´ Win: ´py -m venv env´
+Unix/MacOS: `python3 -m venv env` Win: `py -m venv env`
 
 Activate env:
 Unix/MacOS: ´source env/bin/activate´ Win: ´.\env\Scripts\activate´
