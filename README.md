@@ -37,7 +37,7 @@ Update/Intalling packages:
 Unix/MacOS: `python3 -m pip install -r requirements.txt` Win: `py -m pip install -r requirements.txt`
 
 ## Installing githock
-This Project has some usefull pre-commit at ´.pre-commit-config.yaml´. To have access to those hooks and use pre-commit in your local envirament you only need to go the source directory with your virtual environment active and run the following command: 
+This Project has some usefull pre-commit at `.pre-commit-config.yaml`. To have access to those hooks and use pre-commit in your local envirament you only need to go the source directory with your virtual environment active and run the following command: 
 ```
 pre-commit install
 ```
