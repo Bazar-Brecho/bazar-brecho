@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>BAZAR BRECHÓ</title>
+    </head>
+    <body>
+        <h1>DATABASE BAZAR BRECHÓ</h1>
+        <ul>
+            {% for item in all_items %}
+            <div>
+                <div>
+                    <p>{{ item.product_name }}</p>
+                    <p>Tamanho: {{ item.product_size }}</p>
+                    <p>R$ {{ item.product_price }}</p>
+                    <p>{{ item.product_image }}</p>
+                    <p>
+                    <form action="/delete_item/{{item.id}}/" style="display: inline;" method="post">{% csrf_token %}
+                    <input type="submit" value="Delete"></form>
+                    </p>
+                </div>
+            </div>
+            {% endfor %}
+        </ul>
+
+        <form action="/add_new_item/" method="post">{% csrf_token %}
+            <input type="text" name="product_name">
+            <input type="text" name="product_size">
+            <input type="number" name="product_price">
+            <input type="text" name="product_image_path">
+            <input type="submit" value="Add">
+        </form>
+    </body>
+</html>
