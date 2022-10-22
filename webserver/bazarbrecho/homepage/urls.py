@@ -19,10 +19,10 @@ from django.conf.urls.static import static
 from .views import login, home, database, clothes_list, add_new_item, delete_item
 
 urlpatterns = [
-    path('login/', login),
-    path('', home),
-    path('clothes_list/', clothes_list),
-    path('database/', database),
-    path('add_new_item/', add_new_item),
-    path('delete_item/<int:item_id>/', delete_item)
+    path("login/", login),
+    path("", home),
+    path("clothes_list/", clothes_list),
+    path("database/", database),
+    path("add_new_item/", add_new_item),
+    path("delete_item/<int:item_id>/", delete_item),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
