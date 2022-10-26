@@ -4,7 +4,16 @@ from django.http import HttpResponseRedirect
 from .models import product_entry_example, ProductEntry
 
 
+"""
+Each function here is a "Route" response to be requested by urls.py
+The database interaction is defined on each method, given through 'render()' along with the URL 
+"""
+
+
 def home(request):
+    """
+    Returns: a dict with all items from database, the media URL to be used as reference to webpage elements
+    """
     all_products = ProductEntry.objects.all()
     return render(
         request,
@@ -32,6 +41,9 @@ def clothes_list(request):
 
 
 def add_new_item(request):
+    """
+    Add new item to the database. The class ProductEntry defines an entry for the database.
+    """
     new_item = ProductEntry(
         product_name=request.POST["product_name"],
         product_size=request.POST["product_size"],

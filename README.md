@@ -52,6 +52,13 @@ Inside the virtualenv:
 3. Run 'python manage.py migrate'
 4. Run 'python manage.py runserver'
 
+Images located at 'templates/roupas'
+
+## Database Editor:
+
+The Database Editor page allows to add and remove items from the database easily. Hosted under '/database'
+
+To use it, fill the form and click 'Add' or click 'Delete' to remove an entry from the database.
 
 ## Videos and tutorials:
 

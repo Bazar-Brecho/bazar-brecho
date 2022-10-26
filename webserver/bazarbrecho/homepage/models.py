@@ -1,11 +1,12 @@
 from django.db import models
 
+
 PRODUCT_SIZES = (
     ("PP", "PP"),
     ("P", "P"),
     ("M", "M"),
     ("G", "G"),
-    ("XG", "XG"),
+    ("GG", "GG"),
 )
 
 

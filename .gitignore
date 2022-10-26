@@ -131,5 +131,8 @@ dmypy.json
 # Pycharm IDE
 .idea
 
-# Migrations
+# Migrations (To be done with the command 'python manage.py makemigrations/migrate')
 migrations/
+
+# Notebook
+useful_notes.txt
