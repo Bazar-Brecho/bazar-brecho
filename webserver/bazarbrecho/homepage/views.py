@@ -26,3 +26,6 @@ def delete_item(request, item_id):
     del_item = product_entry.objects.get(id=item_id)
     del_item.delete()
     return HttpResponseRedirect("/clothes_list/")
+
+def cart(request):
+    return render(request, "cart.html")    
