@@ -68,6 +68,13 @@ To use it, fill the form and click 'Add' or click 'Delete' to remove an entry fr
 
 Images located at 'templates/roupas'
 
+Images located at 'templates/roupas'
+
+## Database Editor:
+
+The Database Editor page allows to add and remove items from the database easily. Hosted under '/database'
+
+To use it, fill the form and click 'Add' or click 'Delete' to remove an entry from the database.
 
 ## Videos and tutorials:
 
