@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>BAZAR BRECHÓ</title>
+        <style>
+            body{
+                background-color:gray;
+            }
+            .card{
+                width:200px;
+                height:150;
+                background:#fff;
+                text-align:center;
+                margin:10px;
+                float:left;
+            }
+            .container{
+                display:inline-block;
+                padding:2px 16px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>BAZAR BRECHÓ DATABASE</h1>
+        <h3>To use it, fill the information on each field and click 'Add'</h3>
+        {% for item in all_items %}
+        <div class="container">
+            <span class="card">
+                <p>ID: {{ item.id }}</p>
+                <p>Nome: {{ item.product_name }}</p>
+                <p>Tamanho: {{ item.product_size }}</p>
+                <p>Preço: R$ {{ item.product_price }}</p>
+                <p>{{ item.product_image }}</p>
+                <p>
+                <form action="/delete_item/{{item.id}}/" style="display: inline;" method="post">{% csrf_token %}
+                <input type="submit" value="Delete"></form>
+                </p>
+            </span>
+        </div>
+        {% empty %}
+        <div>
+            <p>Database Empty!</p>
+        </div>
+        {% endfor %}
+        <hr>
+        <div>
+            <p><b><u>Add item to database:</u></b></p>
+            <form action="/add_new_item/" method="post">{% csrf_token %}
+                <p>Product Name:</p>
+                <input type="text" name="product_name">
+                <br>
+                <p>Product Size (PP, P, M, G or GG):</p>
+                <input type="text" name="product_size">
+                <br>
+                <p>Product Price:</p>
+                <input type="number" name="product_price">
+                <br>
+                <p>Product Image (filename at templates/roupas):</p>
+                <input type="text" name="product_image_path">
+                <br><br>
+                <input type="submit" value="Add">
+            </form>
+        </div>
+        <div class="container">
+            <p><a class="btn btn-primary" href="/">HOME</a></p>
+        </div>
+    </body>
+</html>

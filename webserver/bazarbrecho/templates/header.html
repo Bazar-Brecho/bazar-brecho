@@ -5,7 +5,8 @@
         <title>BAZAR BRECHÓ</title>
         <style>
             body{
-                background-color:aquamarine;
+                height:100%;
+                background-color: #FFFFFF;
             }
             .wrap{
                 width:1300px;
@@ -28,28 +29,24 @@
                 padding:2px 16px;
                 display:inline-block;
             }
+            .site-header {
+                margin:0;
+                background-color:#ccffe6;
+                height:100px;
+                padding: 0.5em 1em;
+                display: flex;
+}
         </style>
     </head>
     <body>
-        <h1>BAZAR BRECHÓ</h1>
+<!--        <h1>BAZAR BRECHÓ</h1>-->
+    <header class="site-header">
+        <img src="bazarbrecho.png" style="margin-right:10px">
+        <input type="text" placeholder="Search.." style="height:20px">
+    </header>
         <h2>Lista de Roupas</h2>
         <div class="wrap">
-            {% for item in all_items %}
-            <div class="card">
-                <div class="container">
-                    <img src="{{ media_url }}{{ item.product_image }}" alt="{{ item.product_name }}" style="width:100%">
-                    <h4><b>{{ item.product_name }}</b></h4>
-                    <p>Tamanho: {{ item.product_size }}</p>
-                    <p>R$ {{ item.product_price }}</p>
-                    <p>
-                    <input type="submit" value="Comprar">
-                    </p>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-        <div class="container">
-            <a class="btn btn-primary" href="/database">DATABASE</a>
+            <p>CONTEUDO</p>
         </div>
     </body>
 </html>

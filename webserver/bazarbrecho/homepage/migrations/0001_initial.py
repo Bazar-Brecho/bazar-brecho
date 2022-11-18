@@ -11,7 +11,7 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name="product_entry",
+            name="product_entry_example",
             fields=[
                 (
                     "id",

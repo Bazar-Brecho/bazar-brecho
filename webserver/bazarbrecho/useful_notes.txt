@@ -1,0 +1,11 @@
+NOTES
+
+Models:
+https://docs.djangoproject.com/en/4.1/topics/db/models/
+
+Model Filed Types:
+https://docs.djangoproject.com/en/4.1/ref/models/fields/#model-field-types
+
+Django Template Tags:
+https://www.geeksforgeeks.org/for-loop-django-template-tags/
+https://docs.djangoproject.com/en/4.1/ref/templates/builtins/
