@@ -1,5 +1,8 @@
 name: bazarbrecho
 dependencies:
-  - pip
-  - pip:
-    - -r requirements.txt
+  - pre-commit
+  - django
+  - black==22.10.0
+  - isort==5.10.1
+  - Pillow==8.4.0
+
