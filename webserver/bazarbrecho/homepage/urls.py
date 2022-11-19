@@ -20,7 +20,7 @@ from .views import login, home, database, clothes_list, cart, add_new_item, dele
 
 urlpatterns = [
     path("login/", login),
-    path("", home),
+    path("", home, name="home"),
     path("clothes_list/", clothes_list),
     path("database/", database),
     path("add_new_item/", add_new_item),
