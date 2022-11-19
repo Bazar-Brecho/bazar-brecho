@@ -1,7 +1,12 @@
 from django.shortcuts import render
 from django.conf import settings
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, JsonResponse
 from .models import product_entry_example, ProductEntry
+
+import json
+import datetime
+
+from . utils import cookieCart, cartData, guestOrder
 
 
 """
@@ -61,4 +66,11 @@ def delete_item(request, item_id):
 
 
 def cart(request):
-    return render(request, "cart.html")
+    
+    data = cartData(request)
+    cartItems = data['cartItems']
+    order = data['order']
+    items = data['items']    
+
+    context = {'items':items, 'order':order, 'cartItems':cartItems}
+    return render(request, 'cart.html', context)
