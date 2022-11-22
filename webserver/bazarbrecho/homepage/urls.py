@@ -17,14 +17,15 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path
 
-from .views import add_new_item, cart, clothes_list, database, delete_item, home, login
+from .views import login, home, database, cart, detail_product, add_new_item, delete_item
 
 urlpatterns = [
     path("login/", login),
     path("", home, name="home"),
-    path("clothes_list/", clothes_list),
+    path("home", home, name="homepage"),
+    path("cart/", cart, name="cart"),
+    path("detail/<int:item_id>/", detail_product, name="detail"),
     path("database/", database, name="database"),
     path("add_new_item/", add_new_item),
     path("delete_item/<int:item_id>/", delete_item),
-    path("cart/", cart, name="cart"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

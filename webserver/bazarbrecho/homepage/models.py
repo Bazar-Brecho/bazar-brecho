@@ -20,6 +20,7 @@ class ProductEntry(models.Model):
     product_name = models.CharField(max_length=60)
     product_size = models.CharField(max_length=2, choices=PRODUCT_SIZES)
     product_price = models.FloatField()
+    product_description = models.CharField(max_length=500, default="Description not found.")
 
 
 class Customer(models.Model):
