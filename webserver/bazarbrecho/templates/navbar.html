@@ -1,0 +1,29 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+    <a href="{% url 'home' %}" class="navbar-brand">
+      <img id="logo-icon" class=".img-responsive" src="{% static 'images/logobazar_cor_fundo_D9F3F0.png' %}" alt="Logo">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'home' %}">Loja </a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'database' %}">Database </a>
+        </li>
+      </ul>
+      <div class="form-inline my-2 my-lg-0">
+           <a href="{% url 'cart' %}">
+              <img id="cart-icon" src="{% static 'images/cart.png' %}">
+          </a>  
+      </div>
+    </div>
+</nav>
+<!--<header class="site-header">
+    <img src="{% static 'images/bazarbrecho.png' %}" style="margin-right:10px">
+    <input type="text" placeholder="Search.." style="height:20px">
+</header>-->
