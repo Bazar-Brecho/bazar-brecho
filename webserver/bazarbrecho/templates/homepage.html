@@ -1,55 +1,21 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>BAZAR BRECHÓ</title>
-        <style>
-            body{
-                background-color:aquamarine;
-            }
-            .wrap{
-                width:1300px;
-                margin:auto;
-                margin-top:100px;
-                padding-bottom:50px;
-                display:block;
-            }
-            .card{
-                width:300px;
-                height:550px;
-                background:#fff;
-                text-align:center;
-                font-size:16px;
-                font-family:sans-serif;
-                float:left;
-                margin:10px;
-            }
-            .container{
-                padding:2px 16px;
-                display:inline-block;
-            }
-        </style>
-    </head>
-    <body>
-        <h1>BAZAR BRECHÓ</h1>
-        <h2>Lista de Roupas</h2>
-        <div class="wrap">
-            {% for item in all_items %}
-            <div class="card">
-                <div class="container">
-                    <img src="{{ media_url }}{{ item.product_image }}" alt="{{ item.product_name }}" style="width:100%">
-                    <h4><b>{{ item.product_name }}</b></h4>
-                    <p>Tamanho: {{ item.product_size }}</p>
-                    <p>R$ {{ item.product_price }}</p>
-                    <p>
-                    <input type="submit" value="Comprar">
-                    </p>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+<h1>BAZAR BRECHÓ</h1>
+<h2>Lista de Roupas</h2>
+<div class="wrap">
+    {% for item in all_items %}
+    <div class="card">
         <div class="container">
-            <a class="btn btn-primary" href="/database">DATABASE</a>
+            <img src="{{ media_url }}{{ item.product_image }}" alt="{{ item.product_name }}" style="width:100%">
+            <h4><b>{{ item.product_name }}</b></h4>
+            <p>Tamanho: {{ item.product_size }}</p>
+            <p>R$ {{ item.product_price }}</p>
+            <p>
+            <input type="submit" value="Comprar">
+            </p>
         </div>
-    </body>
-</html>
+    </div>
+    {% endfor %}
+</div>
+{% endblock content %}

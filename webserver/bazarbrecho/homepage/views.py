@@ -1,13 +1,12 @@
-from django.shortcuts import render
+import datetime
+import json
+
 from django.conf import settings
 from django.http import HttpResponseRedirect, JsonResponse
-from .models import product_entry_example, ProductEntry
+from django.shortcuts import render
 
-import json
-import datetime
-
-from . utils import cookieCart, cartData, guestOrder
-
+from .models import ProductEntry, product_entry_example
+from .utils import cartData, cookieCart, guestOrder
 
 """
 Each function here is a "Route" response to be requested by urls.py
@@ -66,11 +65,11 @@ def delete_item(request, item_id):
 
 
 def cart(request):
-    
-    data = cartData(request)
-    cartItems = data['cartItems']
-    order = data['order']
-    items = data['items']    
 
-    context = {'items':items, 'order':order, 'cartItems':cartItems}
-    return render(request, 'cart.html', context)
+    data = cartData(request)
+    cartItems = data["cartItems"]
+    order = data["order"]
+    items = data["items"]
+
+    context = {"items": items, "order": order, "cartItems": cartItems}
+    return render(request, "cart.html", context)
