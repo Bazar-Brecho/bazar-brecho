@@ -29,12 +29,6 @@ h1,h2,h3,h4,h5,h6{
 	background-color: #D9F3F0!important;
 }
 
-#cart-icon{
-	width:100px;
-	display: inline-block;
-	margin-left: 15px;
-}
-
 #cart-total{
 	display: block;
 	text-align: center;
@@ -88,4 +82,16 @@ h1,h2,h3,h4,h5,h6{
 
 .hidden{
 	display: none!important;
+}
+
+#cart-icon{
+	width:40px;
+	display: inline-block;
+	margin-right: 100px;
+}
+
+#logo-icon{
+	width:70px;
+	display: inline-block;
+	margin-left: 90px;
 }
