@@ -6,17 +6,37 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('homepage', '0001_initial'),
+        ("homepage", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='ProductEntry',
+            name="ProductEntry",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('product_name', models.CharField(max_length=60)),
-                ('product_size', models.CharField(choices=[('PP', 'PP'), ('P', 'P'), ('M', 'M'), ('G', 'G'), ('XG', 'XG')], max_length=2)),
-                ('product_price', models.FloatField()),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("product_name", models.CharField(max_length=60)),
+                (
+                    "product_size",
+                    models.CharField(
+                        choices=[
+                            ("PP", "PP"),
+                            ("P", "P"),
+                            ("M", "M"),
+                            ("G", "G"),
+                            ("XG", "XG"),
+                        ],
+                        max_length=2,
+                    ),
+                ),
+                ("product_price", models.FloatField()),
             ],
         ),
     ]
