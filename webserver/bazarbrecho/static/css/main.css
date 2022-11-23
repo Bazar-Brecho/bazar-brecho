@@ -1,5 +1,14 @@
+html {
+	height: 100%;
+}
+
 body{
 	background-color: hsl(0, 0%, 98%);
+
+	min-height: 100%;
+
+	display: flex;
+	flex-direction: column;
 }
 
 h1,h2,h3,h4,h5,h6{
@@ -138,3 +147,20 @@ detail-card{
 	display: inline-block;
 	margin-left: 90px;
 }
+
+
+
+footer {
+	margin-top: auto;
+	text-align: center;
+}
+
+ion-icon {
+	color: #80d4c4;
+	font-size: 70px;
+  }
+
+#logo-icon-footer{
+	width:400px;
+}
+  
