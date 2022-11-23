@@ -1,44 +1,48 @@
 {% extends 'main.html' %}
 {% load static %}
 {% block content %}
-<h1>BAZAR BRECHÓ DATABASE</h1>
-<h3>To use it, fill the information on each field and click 'Add'</h3>
-{% for item in all_items %}
-<div class="container">
-    <span class="card">
-        <p>ID: {{ item.id }}</p>
-        <p>Nome: {{ item.product_name }}</p>
-        <p>Tamanho: {{ item.product_size }}</p>
-        <p>Preço: R$ {{ item.product_price }}</p>
-        <p>{{ item.product_image }}</p>
-        <p>
-        <form action="/delete_item/{{item.id}}/" style="display: inline;" method="post">{% csrf_token %}
-        <input type="submit" value="Delete"></form>
-        </p>
-    </span>
-</div>
-{% empty %}
-<div>
-    <p>Database Empty!</p>
-</div>
-{% endfor %}
-<hr>
-<div>
-<p><b><u>Add item to database:</u></b></p>
-<form action="/add_new_item/" method="post">{% csrf_token %}
-    <p>Product Name:</p>
-    <input type="text" name="product_name">
-    <br>
-    <p>Product Size (PP, P, M, G or GG):</p>
-    <input type="text" name="product_size">
-    <br>
-    <p>Product Price:</p>
-    <input type="number" name="product_price">
-    <br>
-    <p>Product Image (filename at templates/roupas):</p>
-    <input type="text" name="product_image_path">
-    <br><br>
-    <input type="submit" value="Add">
-    </form>
-</div>
+<body>
+    <h1>DATABASE BAZAR BRECHÓ</h1>
+    {% for item in all_items %}
+    <div class="container">
+        <span class="card" style="height:250px">
+            <p>ID: {{ item.id }}</p>
+            <p>Nome: {{ item.product_name }}</p>
+            <p>Tamanho: {{ item.product_size }}</p>
+            <p>Preço: R$ {{ item.product_price }}</p>
+            <p>{{ item.product_image }}</p>
+            <p>
+            <form action="/delete_item/{{item.id}}/" style="display: inline;" method="post">{% csrf_token %}
+            <input type="submit" value="Delete"></form>
+            </p>
+        </span>
+    </div>
+    {% empty %}
+    <div>
+        <p>Database Empty!</p>
+    </div>
+    {% endfor %}
+    <hr>
+    <div style="display:inline-block">
+        <p><b><u>Add item to database:</u></b></p>
+        <form action="/add_new_item/" method="post">{% csrf_token %}
+            <p>Product Name:</p>
+            <input type="text" name="product_name">
+            <br>
+            <p>Product Size (PP, P, M, G or GG):</p>
+            <input type="text" name="product_size">
+            <br>
+            <p>Product Price:</p>
+            <input type="number" name="product_price">
+            <br>
+            <p>Product Description:</p>
+            <input type="text" name="product_description">
+            <br>
+            <p>Product Image (filename at templates/roupas):</p>
+            <input type="text" name="product_image_path">
+            <br><br>
+            <input type="submit" value="Add">
+        </form>
+    </div>
+</body>
 {% endblock content %}
