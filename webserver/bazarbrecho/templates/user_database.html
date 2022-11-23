@@ -1,0 +1,19 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+<h1>BAZAR BRECHÓ</h1>
+<h3>To use it, fill the information on each field and click 'Add'</h3>
+<hr>
+<div>
+<p><b><u>Cadastrar cliente:</u></b></p>
+<form action="/add_new_item/" method="post">{% csrf_token %}
+    <p>Nome Cliente:</p>
+    <input type="text" name="cliente_name">
+    <br>
+    <p>Senha:</p>
+    <input type="password" name="cliente_password">
+    <br><br>
+    <input type="submit" value="Cadastrar">
+    </form>
+</div>
+{% endblock content %}
