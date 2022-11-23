@@ -19,14 +19,17 @@ class ProductEntry(models.Model):
     product_image = models.ImageField(upload_to="templates/roupas", default="")
     product_name = models.CharField(max_length=60)
     product_size = models.CharField(max_length=2, choices=PRODUCT_SIZES)
-    product_price = models.DecimalField (decimal_places=2, max_digits=30)
+    product_price = models.DecimalField(decimal_places=2, max_digits=30)
+    product_description = models.CharField(
+        max_length=500, default="Description not found."
+    )
 
 
 class ClienteEntry(models.Model):
     product_image = models.ImageField(upload_to="templates/roupas", default="")
     product_name = models.CharField(max_length=60)
     product_size = models.CharField(max_length=2, choices=PRODUCT_SIZES)
-    product_price = models.DecimalField (decimal_places=2, max_digits=30)    
+    product_price = models.DecimalField(decimal_places=2, max_digits=30)
 
 
 class Customer(models.Model):
