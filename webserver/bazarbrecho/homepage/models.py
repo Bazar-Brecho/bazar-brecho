@@ -26,9 +26,8 @@ class ProductEntry(models.Model):
 
 
 class ClienteEntry(models.Model):
-    client_image = models.ImageField(upload_to="templates/roupas", default="")
     client_name = models.CharField(max_length=60)
-    client_size = models.CharField(max_length=2, choices=PRODUCT_SIZES)
+    client_password = models.CharField(max_length=60)
 
 
 class Customer(models.Model):
