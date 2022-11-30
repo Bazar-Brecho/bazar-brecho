@@ -26,6 +26,7 @@ from .views import (
     delete_item,
     login,
     checkout,
+    updateItem,
 )
 
 
@@ -40,4 +41,5 @@ urlpatterns = [
     path("delete_item/<int:item_id>/", delete_item),
     path("cart/", cart, name="cart"),
     path("checkout/", checkout, name="checkout"),
+    path('update_item/', updateItem, name="update_item"),     
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
