@@ -16,14 +16,16 @@ class product_entry_example(models.Model):
 
 
 class ProductEntry(models.Model):
-    product_image = models.ImageField(upload_to="templates/roupas", default="")
+    product_image = models.ImageField(upload_to="templates/roupas", default="")    
     product_name = models.CharField(max_length=60)
     product_size = models.CharField(max_length=2, choices=PRODUCT_SIZES)
     product_price = models.DecimalField(decimal_places=2, max_digits=30)
     product_description = models.CharField(
         max_length=500, default="Description not found."
     )
-
+    
+    def __str__(self):
+        return self.product_name      
 
 class ClienteEntry(models.Model):
     client_name = models.CharField(max_length=60)
@@ -37,24 +39,6 @@ class Customer(models.Model):
 
     def __str__(self):
         return self.name
-
-
-class Product(models.Model):
-    name = models.CharField(max_length=200, null=True)
-    price = models.DecimalField(max_digits=7, decimal_places=2)
-    size = models.CharField(max_length=2, choices=PRODUCT_SIZES)
-    image = models.ImageField(null=True, blank=True)
-
-    def __str__(self):
-        return self.name
-
-    @property
-    def imageURL(self):
-        try:
-            url = self.image.url
-        except:
-            url = ""
-        return url
 
 
 class Order(models.Model):
@@ -92,7 +76,7 @@ class Order(models.Model):
 
 class OrderItem(models.Model):
     product = models.ForeignKey(
-        Product, on_delete=models.SET_NULL, null=True, blank=True
+        ProductEntry, on_delete=models.SET_NULL, null=True, blank=True
     )
     order = models.ForeignKey(Order, on_delete=models.SET_NULL, null=True, blank=True)
     quantity = models.IntegerField(default=0, null=True, blank=True)
@@ -100,7 +84,7 @@ class OrderItem(models.Model):
 
     @property
     def get_total(self):
-        total = self.product.price * self.quantity
+        total = self.product.product_price * self.quantity
         return total
 
 

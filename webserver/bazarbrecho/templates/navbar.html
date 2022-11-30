@@ -10,16 +10,17 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="{% url 'home' %}">Loja </a>
+          <a class="nav-link" href="{% url 'home' %}"><strong> Bazar Brechó </strong></a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link" href="{% url 'database' %}">Cadastro produtos </a>
+          <a class="nav-link" href="{% url 'database' %}"> Quero vender </a>
         </li>
       </ul>
       <div class="form-inline my-2 my-lg-0">
-           <a href="{% url 'cart' %}">
-              <img id="cart-icon" src="{% static 'images/cart.png' %}">
-          </a>  
+        <a href="{% url 'cart' %}">
+          <img id="cart-icon" src="{% static 'images/cart.png' %}"> 
+        </a>
+        <p id="cart-total">{{cartItems}}</p>   
       </div>
     </div>
 </nav>

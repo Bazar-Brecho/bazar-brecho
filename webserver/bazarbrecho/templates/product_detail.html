@@ -16,7 +16,7 @@
             <p>Tamanho: {{ product.product_size }}</p>
             <p>R$ {{ product.product_price }}</p>
             <div>
-            <input type="submit" value="Comprar" style="position:absolute bottom:0">
+            <input type="submit" value="Comprar" style="position:absolute bottom=0" data-product="{{product.id}}" data-action="add" class="update-cart">
             </div>
         </div>
         <div class="inner-container">

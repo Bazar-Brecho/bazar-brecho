@@ -2,7 +2,6 @@
 {% load static %}
 {% block content %}
 <div class="wrap">
-    <h2>Lista de Roupas</h2>
     {% for item in all_items %}
     <div class="card">
         <div class="container">
@@ -12,7 +11,8 @@
             <p>Tamanho: {{ item.product_size }}</p>
             <p>R$ {{ item.product_price }}</p>
             <p>
-            <input type="submit" value="Comprar" style="width:40% display=inline">
+            <!--input type="submit" value="Comprar" style="width:40% display=inline" data-product="{{item.id}}" data-action="add" class="update-cart"-->
+            <button data-product="{{item.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">Comprar</button>
             <form action="/detail/{{item.id}}/" style="width:40% display=inline" method="post">{% csrf_token %}
                 <input type="submit" value="Ver detalhes">
             </form>
