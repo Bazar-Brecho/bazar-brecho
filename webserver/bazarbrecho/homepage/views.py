@@ -17,36 +17,48 @@ The database interaction is defined on each method, given through 'render()' alo
 def home(request):
     """
     Returns: a dict with all items from database, the media URL to be used as reference to webpage elements
-    """   
+    """
     all_products = ProductEntry.objects.all()
     data = cartData(request)
-    cartItems = data['cartItems']      
+    cartItems = data["cartItems"]
     return render(
         request,
         "homepage.html",
-        {"all_items": all_products, "media_url": settings.MEDIA_URL, 'cartItems':cartItems},
+        {
+            "all_items": all_products,
+            "media_url": settings.MEDIA_URL,
+            "cartItems": cartItems,
+        },
     )
 
 
-
 def cart(request):
-    
-    data = cartData(request)
-    cartItems = data['cartItems']
-    order = data['order']
-    items = data['items']    
 
-    return render(request, 'cart.html', {'items':items, 'order':order, 'cartItems':cartItems})
+    data = cartData(request)
+    cartItems = data["cartItems"]
+    order = data["order"]
+    items = data["items"]
+
+    return render(
+        request,
+        "cart.html",
+        {
+            "items": items,
+            "order": order,
+            "cartItems": cartItems,
+            "media_url": settings.MEDIA_URL,
+        },
+    )
 
 
 def detail_product(request, item_id):
     product = ProductEntry.objects.get(id=item_id)
     data = cartData(request)
-    cartItems = data['cartItems']      
+    cartItems = data["cartItems"]
     return render(
         request,
         "product_detail.html",
-        {"media_url": settings.MEDIA_URL, "product": product, 'cartItems':cartItems},
+        {"media_url": settings.MEDIA_URL, "product": product, "cartItems": cartItems},
     )
 
 
@@ -56,10 +68,16 @@ def login(request):
 
 def database(request):
     all_products = ProductEntry.objects.all()
+    data = cartData(request)
+    cartItems = data["cartItems"]
     return render(
         request,
         "database_editor.html",
-        {"all_items": all_products, "media_url": settings.MEDIA_URL},
+        {
+            "all_items": all_products,
+            "media_url": settings.MEDIA_URL,
+            "cartItems": cartItems,
+        },
     )
 
 
@@ -91,36 +109,43 @@ def checkout(request):
     order = data["order"]
     items = data["items"]
 
-    context = {"items": items, "order": order, "cartItems": cartItems}
+    context = {
+        "items": items,
+        "order": order,
+        "cartItems": cartItems,
+        "media_url": settings.MEDIA_URL,
+    }
     return render(request, "checkout.html", context)
 
 
 def updateItem(request):
     data = json.loads(request.body)
-    productId = data['productId']
-    action = data['action']
-    print('Action:', action)
-    print('Product:',productId)
-    
+    productId = data["productId"]
+    action = data["action"]
+    print("Action:", action)
+    print("Product:", productId)
+
     customer = request.user.customer
     product = ProductEntry.objects.get(id=productId)
     order, created = Order.objects.get_or_create(customer=customer, complete=False)
 
     orderItem, created = OrderItem.objects.get_or_create(order=order, product=product)
 
-    if action == 'add':
-        orderItem.quantity = (orderItem.quantity + 1)
-    elif action == 'remove':
-        orderItem.quantity = (orderItem.quantity - 1)
+    if action == "add":
+        orderItem.quantity = orderItem.quantity + 1
+    elif action == "remove":
+        orderItem.quantity = orderItem.quantity - 1
 
     orderItem.save()
 
     if orderItem.quantity <= 0:
         orderItem.delete()
 
-    return JsonResponse('Item was added', safe=False)
+    return JsonResponse("Item was added", safe=False)
+
 
 from django.views.decorators.csrf import csrf_exempt
+
 
 @csrf_exempt
 def processOrder(request):
@@ -129,12 +154,12 @@ def processOrder(request):
 
     if request.user.is_authenticated:
         customer = request.user.customer
-        order, created = Order.objects.get_or_create(customer=customer, complete=False)       
+        order, created = Order.objects.get_or_create(customer=customer, complete=False)
 
     else:
         customer, order = guestOrder(request, data)
 
-    total = float(data['form']['total'])
+    total = float(data["form"]["total"])
     order.transaction_id = transaction_id
 
     if total == order.get_cart_total:
@@ -145,10 +170,10 @@ def processOrder(request):
         ShippingAddress.objects.create(
             customer=customer,
             order=order,
-            address=data['shipping']['address'],
-            city=data['shipping']['city'],
-            state=data['shipping']['state'],
-            zipcode=data['shipping']['zipcode'],
+            address=data["shipping"]["address"],
+            city=data["shipping"]["city"],
+            state=data["shipping"]["state"],
+            zipcode=data["shipping"]["zipcode"],
         )
 
-    return JsonResponse('Payment Complete', safe=False)
+    return JsonResponse("Payment Complete", safe=False)
