@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
 <div>
-    <h1>DATABASE BAZAR BRECHÓ</h1>
+    <h1>Minha Loja</h1>
     {% for item in all_items %}
     <div class="container">
         <span class="card" style="height:250px">
@@ -19,26 +19,26 @@
     </div>
     {% empty %}
     <div>
-        <p>Database Empty!</p>
+        <p>Nenhum produto a venda</p>
     </div>
     {% endfor %}
     <hr>
     <div style="display:inline-block">
-        <p><b><u>Add item to database:</u></b></p>
+        <p><b><u>Novo</u></b></p>
         <form action="/add_new_item/" method="post">{% csrf_token %}
-            <p>Product Name:</p>
+            <p>Título do produto:</p>
             <input type="text" name="product_name">
             <br>
-            <p>Product Size (PP, P, M, G or GG):</p>
+            <p>Tamanho (PP, P, M, G or GG):</p>
             <input type="text" name="product_size">
             <br>
-            <p>Product Price:</p>
+            <p>Preço:</p>
             <input type="number" name="product_price">
             <br>
-            <p>Product Description:</p>
+            <p>Descrição:</p>
             <input type="text" name="product_description">
             <br>
-            <p>Product Image (filename at templates/roupas):</p>
+            <p>Imagem (nome do arquivo em templates/roupas):</p>
             <input type="text" name="product_image_path">
             <br><br>
             <input type="submit" value="Add">

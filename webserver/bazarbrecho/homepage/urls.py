@@ -16,8 +16,19 @@ Including another URLconf
 from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path
+from .views import (
+    login,
+    home,
+    database,
+    cart,
+    detail_product,
+    add_new_item,
+    delete_item,
+    login,
+    checkout,
+    updateItem,
+)
 
-from .views import login, home, database, cart, detail_product, add_new_item, delete_item
 
 urlpatterns = [
     path("login/", login),
@@ -28,4 +39,7 @@ urlpatterns = [
     path("database/", database, name="database"),
     path("add_new_item/", add_new_item),
     path("delete_item/<int:item_id>/", delete_item),
+    path("cart/", cart, name="cart"),
+    path("checkout/", checkout, name="checkout"),
+    path('update_item/', updateItem, name="update_item"),     
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
