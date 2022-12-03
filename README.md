@@ -1,6 +1,8 @@
 # bazar-brecho
 A second hand clothing marketplace
 
+image.png
+
 # Development
 
 ## Create or Update you virtual environment
@@ -85,3 +87,18 @@ https://django-best-practices.readthedocs.io/en/latest/index.html
 
 TO-DO item list (handling databases):
 https://www.youtube.com/watch?v=ovql0Ui3n_I
+
+
+## Current Status:
+
+### Homepage
+![](website_status/home.png)
+
+### Cart
+![](website_status/cart.png)
+
+### Checkout
+![](website_status/checkout.png)
+
+### My Store
+![](website_status/my_store.png)
