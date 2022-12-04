@@ -90,6 +90,7 @@ detail-card{
 	height: 25px;
 	border-radius: 50%;
 	font-size: 14px;
+	margin-right: 100px;
 }
 
 .col-lg-4, .col-lg-6, .col-lg-8, .col-lg-12{
@@ -139,7 +140,6 @@ detail-card{
 #cart-icon{
 	width:40px;
 	display: inline-block;
-	margin-right: 100px;
 }
 
 #logo-icon{
