@@ -75,6 +75,8 @@ def product_image_view(request):
 def success(request):
     return render(request, "upload_success.html")
 
+def success(request):
+    return render(request, 'upload_success.html')
 
 def cart(request):
 
@@ -120,7 +122,7 @@ def update_item(request):
 
     customer = request.user.customer
     product = ProductEntry.objects.get(id=product_id)
-    # product = requests.get(f'{PRODUCTS_URL}/item/{item_id}').json() <== TODO change to this
+    # TODO changue to API call => product = requests.get(f'{PRODUCTS_URL}/item/{item_id}').json()
     order, created = Order.objects.get_or_create(customer=customer, complete=False)
 
     order_item, created = Order_item.objects.get_or_create(order=order, product=product)

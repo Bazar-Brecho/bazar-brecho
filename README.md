@@ -112,6 +112,8 @@ https://django-best-practices.readthedocs.io/en/latest/index.html
 TO-DO item list (handling databases):
 https://www.youtube.com/watch?v=ovql0Ui3n_I
 
+Django REST Framework example:
+https://www.youtube.com/watch?v=i5JykvxUk_A
 
 ## Current Status:
 

@@ -1,7 +1,6 @@
 import json
 from products.models import ProductEntry
 
-
 def cookie_cart(request):
 
     try:
