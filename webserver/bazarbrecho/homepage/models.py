@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
+from products.models import ProductEntry
 
 PRODUCT_SIZES = (
     ("PP", "PP"),
@@ -8,28 +9,6 @@ PRODUCT_SIZES = (
     ("G", "G"),
     ("GG", "GG"),
 )
-
-
-# Create your models here.
-class product_entry_example(models.Model):
-    content = models.TextField()
-
-
-class ProductEntry(models.Model):
-    product_image = models.ImageField(upload_to="templates/roupas", default="")    
-    product_name = models.CharField(max_length=60)
-    product_size = models.CharField(max_length=2, choices=PRODUCT_SIZES)
-    product_price = models.DecimalField(decimal_places=2, max_digits=30)
-    product_description = models.CharField(
-        max_length=500, default="Description not found."
-    )
-    
-    def __str__(self):
-        return self.product_name      
-
-class ClienteEntry(models.Model):
-    client_name = models.CharField(max_length=60)
-    client_password = models.CharField(max_length=60)
 
 
 class Customer(models.Model):

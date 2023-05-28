@@ -1,5 +1,5 @@
 import json
-
+from products.models import ProductEntry
 from .models import *
 
 
@@ -38,7 +38,6 @@ def cookieCart(request):
     return {"cartItems": cartItems, "order": order, "items": items}
 
 
-
 def cartData(request):
 
     cookieData = cookieCart(request)
@@ -47,7 +46,6 @@ def cartData(request):
     items = cookieData["items"]
 
     return {"cartItems": cartItems, "order": order, "items": items}
-
 
 
 def guestOrder(request, data):

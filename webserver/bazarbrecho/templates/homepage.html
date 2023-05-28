@@ -2,10 +2,10 @@
 {% load static %}
 {% block content %}
 <div class="wrap">
-    {% for item in all_items %}
+    {% for item in all_items.products %}
     <div class="card">
         <div class="container">
-            <a href="/detail/{{item.id}}/"><img src="{{ media_url }}{{ item.product_image }}" alt="{{ item.product_name }}"
+            <a href="/detail/{{item.id}}/"><img src="{{ item.product_image }}" alt="{{ item.product_name }}"
                 width="250" height="340"></a>
             <a href="/detail/{{item.id}}/"><h4><b>{{ item.product_name }}</b></h4></a>
             <p>Tamanho: {{ item.product_size }}</p>
