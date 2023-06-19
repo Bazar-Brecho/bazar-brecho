@@ -2,8 +2,7 @@ from django.conf import settings
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.shortcuts import render, redirect
 from rest_framework.decorators import api_view
-from .models import *
-from .utils import cartData, cookieCart, guestOrder
+from .utils import cart_data, cookie_cart, guest_order
 from .forms import ProductImageForm
 from products.models import ProductEntry
 import requests
@@ -24,7 +23,7 @@ def login(request):
 
 def get_products(item_id=None):
     if item_id:
-        return requests.get(f'{PRODUCTS_URL}item/{item_id}').json()
+        return requests.get(f"{PRODUCTS_URL}item/{item_id}").json()
     else:
         return requests.get(PRODUCTS_URL).json()
 
@@ -34,49 +33,53 @@ def home(request):
     Returns: a dict with all items from database, the media URL to be used as reference to webpage elements
     """
     all_items = get_products()
-    data = cartData(request)
-    cartItems = data["cartItems"]
+    data = cart_data(request)
+    cart_items = data["cart_items"]
     return render(
         request,
         "homepage.html",
         {
             "all_items": all_items,
             "media_url": settings.MEDIA_URL,
-            "cartItems": cartItems,
+            "cart_items": cart_items,
         },
     )
 
 
 def detail_product(request, item_id):
     product = get_products(item_id=item_id)
-    data = cartData(request)
-    cartItems = data["cartItems"]
+    data = cart_data(request)
+    cart_items = data["cart_items"]
     return render(
         request,
         "product_detail.html",
-        {"media_url": settings.MEDIA_URL, "selected_item": product, "cartItems": cartItems},
+        {
+            "media_url": settings.MEDIA_URL,
+            "selected_item": product,
+            "cart_items": cart_items,
+        },
     )
 
 
 def product_image_view(request):
-    if request.method == 'POST':
+    if request.method == "POST":
         form = ProductImageForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('success')
+            return redirect("success")
     else:
         form = ProductImageForm()
-    return render(request, 'data_upload.html', {'form': form})
+    return render(request, "data_upload.html", {"form": form})
 
 
 def success(request):
-    return render(request, 'upload_success.html')
+    return render(request, "upload_success.html")
 
 
 def cart(request):
 
-    data = cartData(request)
-    cartItems = data["cartItems"]
+    data = cart_data(request)
+    cart_items = data["cart_items"]
     order = data["order"]
     items = data["items"]
 
@@ -86,51 +89,51 @@ def cart(request):
         {
             "items": items,
             "order": order,
-            "cartItems": cartItems,
+            "cart_items": cart_items,
             "media_url": settings.MEDIA_URL,
         },
     )
 
 
 def checkout(request):
-    data = cartData(request)
+    data = cart_data(request)
 
-    cartItems = data["cartItems"]
+    cart_items = data["cart_items"]
     order = data["order"]
     items = data["items"]
 
     context = {
         "items": items,
         "order": order,
-        "cartItems": cartItems,
+        "cart_items": cart_items,
         "media_url": settings.MEDIA_URL,
     }
     return render(request, "checkout.html", context)
 
 
-def updateItem(request):
+def update_item(request):
     data = json.loads(request.body)
-    productId = data["productId"]
+    product_id = data["product_id"]
     action = data["action"]
     print("Action:", action)
-    print("Product:", productId)
+    print("Product:", product_id)
 
     customer = request.user.customer
-    product = ProductEntry.objects.get(id=productId)
+    product = ProductEntry.objects.get(id=product_id)
     # product = requests.get(f'{PRODUCTS_URL}/item/{item_id}').json() <== TODO change to this
     order, created = Order.objects.get_or_create(customer=customer, complete=False)
 
-    orderItem, created = OrderItem.objects.get_or_create(order=order, product=product)
+    order_item, created = Order_item.objects.get_or_create(order=order, product=product)
 
     if action == "add":
-        orderItem.quantity = orderItem.quantity + 1
+        order_item.quantity = order_item.quantity + 1
     elif action == "remove":
-        orderItem.quantity = orderItem.quantity - 1
+        order_item.quantity = order_item.quantity - 1
 
-    orderItem.save()
+    order_item.save()
 
-    if orderItem.quantity <= 0:
-        orderItem.delete()
+    if order_item.quantity <= 0:
+        order_item.delete()
 
     return JsonResponse("Item was added", safe=False)
 
@@ -139,7 +142,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 
 @csrf_exempt
-def processOrder(request):
+def process_order(request):
     transaction_id = datetime.datetime.now().timestamp()
     data = json.loads(request.body)
 
@@ -148,7 +151,7 @@ def processOrder(request):
         order, created = Order.objects.get_or_create(customer=customer, complete=False)
 
     else:
-        customer, order = guestOrder(request, data)
+        customer, order = guest_order(request, data)
 
     total = float(data["form"]["total"])
     order.transaction_id = transaction_id

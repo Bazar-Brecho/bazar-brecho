@@ -132,7 +132,7 @@ class Migration(migrations.Migration):
             ],
         ),
         migrations.CreateModel(
-            name="OrderItem",
+            name="order_item",
             fields=[
                 (
                     "id",

@@ -18,13 +18,9 @@
       </ul>
       <div class="form-inline my-2 my-lg-0">
         <a href="{% url 'cart' %}">
-          <img id="cart-icon" src="{% static 'images/cart.png' %}"> 
+          <img id="cart-icon" src="{% static 'images/cart.png' %}" alt=""> 
         </a>
-        <p id="cart-total">{{cartItems}}</p>   
+        <p id="cart-total">{{cart_items}}</p>   
       </div>
     </div>
 </nav>
-<!--<header class="site-header">
-    <img src="{% static 'images/bazarbrecho.png' %}" style="margin-right:10px">
-    <input type="text" placeholder="Search.." style="height:20px">
-</header>-->

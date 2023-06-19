@@ -17,9 +17,8 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
 
-# router = routers.DefaultRouter()
-# router.register('homepage', ImagemViewSet)
-
-urlpatterns = [path("admin/", admin.site.urls),
-               path("", include("homepage.urls")),
-               path("", include("products.urls"))]
+urlpatterns = [
+    path("admin/", admin.site.urls),
+    path("", include("homepage.urls")),
+    path("", include("products.urls")),
+]

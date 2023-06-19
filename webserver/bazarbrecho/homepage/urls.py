@@ -23,7 +23,7 @@ from .views import (
     cart,
     detail_product,
     checkout,
-    updateItem,
+    update_item,
     success,
 )
 
@@ -36,7 +36,7 @@ urlpatterns = [
     path("detail/<int:item_id>/", detail_product, name="detail"),
     path("cart/", cart, name="cart"),
     path("checkout/", checkout, name="checkout"),
-    path('update_item/', updateItem, name="update_item"),
-    path('data_upload', product_image_view, name='data_upload'),
-    path('success', success, name='success'),
+    path("update_item/", update_item, name="update_item"),
+    path("data_upload", product_image_view, name="data_upload"),
+    path("success", success, name="success"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
