@@ -19,14 +19,12 @@ from django.urls import path
 from .views import (
     login,
     home,
-    database,
+    product_image_view,
     cart,
     detail_product,
-    add_new_item,
-    delete_item,
-    login,
     checkout,
-    updateItem,
+    update_item,
+    success,
 )
 
 
@@ -36,10 +34,9 @@ urlpatterns = [
     path("home", home, name="homepage"),
     path("cart/", cart, name="cart"),
     path("detail/<int:item_id>/", detail_product, name="detail"),
-    path("database/", database, name="database"),
-    path("add_new_item/", add_new_item),
-    path("delete_item/<int:item_id>/", delete_item),
     path("cart/", cart, name="cart"),
     path("checkout/", checkout, name="checkout"),
-    path('update_item/', updateItem, name="update_item"),     
+    path("update_item/", update_item, name="update_item"),
+    path("data_upload", product_image_view, name="data_upload"),
+    path("success", success, name="success"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

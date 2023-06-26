@@ -2,34 +2,34 @@ var updateBtns = document.getElementsByClassName('update-cart')
 
 for(var i = 0; i < updateBtns.length; i++){
     updateBtns[i].addEventListener('click', function(){
-        var productId = this.dataset.product
+        var product_id = this.dataset.product
         var action = this.dataset.action
-        console.log('productId:', productId, 'action:', action)
+        console.log('product_id:', product_id, 'action:', action)
 
         console.log('USER:', user)
         if(user === 'AnonymousUser'){
-            addCookieItem(productId, action)
+            addCookieItem(product_id, action)
         }
     })
 }
 
-function addCookieItem(productId,action){
+function addCookieItem(product_id,action){
     console.log('User is not authenticated')
 
     if (action == 'add'){
-        if(cart[productId] == undefined){
-            cart[productId] = {'quantity':1}
+        if(cart[product_id] == undefined){
+            cart[product_id] = {'quantity':1}
         }else{
-            cart[productId]['quantity'] += 1
+            cart[product_id]['quantity'] += 1
         }
     }
 
     if (action == 'remove'){
-        cart[productId]['quantity'] -= 1
+        cart[product_id]['quantity'] -= 1
 
-        if(cart[productId]['quantity'] <= 0){
+        if(cart[product_id]['quantity'] <= 0){
             console.log('Remove Item')
-            delete cart[productId]
+            delete cart[product_id]
         }
     } 
     console.log('Cart:', cart)

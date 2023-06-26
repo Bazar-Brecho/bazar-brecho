@@ -2,16 +2,15 @@
 {% load static %}
 {% block content %}
 <div class="wrap">
-    {% for item in all_items %}
+    {% for item in all_items.products %}
     <div class="card">
         <div class="container">
-            <a href="/detail/{{item.id}}/"><img src="{{ media_url }}{{ item.product_image }}" alt="{{ item.product_name }}"
+            <a href="/detail/{{item.id}}/"><img src="{{ item.product_image }}" alt="{{ item.product_name }}"
                 width="250" height="340"></a>
             <a href="/detail/{{item.id}}/"><h4><b>{{ item.product_name }}</b></h4></a>
             <p>Tamanho: {{ item.product_size }}</p>
             <p>R$ {{ item.product_price }}</p>
             <p>
-            <!--input type="submit" value="Comprar" style="width:40% display=inline" data-product="{{item.id}}" data-action="add" class="update-cart"-->
             <button data-product="{{item.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">Comprar</button>
             <form action="/detail/{{item.id}}/" style="width:40% display=inline" method="post">{% csrf_token %}
                 <input type="submit" value="Ver detalhes">

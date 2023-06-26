@@ -28,7 +28,7 @@ class Migration(migrations.Migration):
             ],
         ),
         migrations.AlterField(
-            model_name="orderitem",
+            model_name="order_item",
             name="product",
             field=models.ForeignKey(
                 blank=True,

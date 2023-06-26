@@ -1,0 +1,16 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+<div class="wrap">
+    <h1>Minha Loja</h1>
+    <hr>
+    <div style="display:inline-block">
+        <p><b><u>Novo Produto</u></b></p>
+        <form method="post" enctype="multipart/form-data">{% csrf_token %}
+            {{ form.as_p }}
+            <br><br>
+            <input type="submit" value="Add">
+        </form>
+    </div>
+</div>
+{% endblock content %}
