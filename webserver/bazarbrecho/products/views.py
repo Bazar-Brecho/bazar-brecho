@@ -8,6 +8,10 @@ from .serializers import ProductSerializer
 from .models import ProductEntry
 from .models import PRODUCT_SIZES
 import json
+from django.views.decorators.http import require_http_methods
+
+
+require_safe = require_http_methods(["POST", "GET"])
 
 
 def get_products(item_id=None):
@@ -17,7 +21,7 @@ def get_products(item_id=None):
         return ProductSerializer(ProductEntry.objects.get(id=item_id))
 
 
-@api_view(["GET", "POST"])
+@require_safe
 def product_list(request):
 
     if request.method == "GET":
@@ -35,7 +39,7 @@ def product_list(request):
             return Response(serializer.errors, status=status.HTTP_404_BAD_REQUEST)
 
 
-@api_view(["GET"])
+@require_safe
 def detail_product(request, item_id):
     product_serializer = get_products(item_id=item_id)
     return JsonResponse({"product": product_serializer.data})

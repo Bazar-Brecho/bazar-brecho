@@ -8,7 +8,10 @@ from products.models import ProductEntry
 import requests
 import json
 import datetime
+from django.views.decorators.http import require_http_methods
 
+
+require_safe = require_http_methods(["POST", "GET"])
 
 """
 Each function here is a "Route" response to be requested by urls.py
@@ -17,8 +20,12 @@ The database interaction is defined on each method, given through 'render()' alo
 PRODUCTS_URL = "http://127.0.0.1:8000/products/"
 
 
+@require_safe
 def login(request):
     return render(request, "user_login.html")
+
+
+require_http_methods(["GET"])
 
 
 def get_products(item_id=None):
@@ -28,6 +35,7 @@ def get_products(item_id=None):
         return requests.get(PRODUCTS_URL).json()
 
 
+@require_safe
 def home(request):
     """
     Returns: a dict with all items from database, the media URL to be used as reference to webpage elements
@@ -46,6 +54,7 @@ def home(request):
     )
 
 
+@require_safe
 def detail_product(request, item_id):
     product = get_products(item_id=item_id)
     data = cart_data(request)
@@ -61,6 +70,7 @@ def detail_product(request, item_id):
     )
 
 
+@require_safe
 def product_image_view(request):
     if request.method == "POST":
         form = ProductImageForm(request.POST, request.FILES)
@@ -72,10 +82,12 @@ def product_image_view(request):
     return render(request, "data_upload.html", {"form": form})
 
 
+@require_safe
 def success(request):
     return render(request, "upload_success.html")
 
 
+@require_safe
 def cart(request):
 
     data = cart_data(request)
@@ -95,6 +107,7 @@ def cart(request):
     )
 
 
+@require_safe
 def checkout(request):
     data = cart_data(request)
 
@@ -111,6 +124,7 @@ def checkout(request):
     return render(request, "checkout.html", context)
 
 
+@require_safe
 def update_item(request):
     data = json.loads(request.body)
     product_id = data["product_id"]
@@ -141,7 +155,7 @@ def update_item(request):
 from django.views.decorators.csrf import csrf_exempt
 
 
-@csrf_exempt
+@require_safe
 def process_order(request):
     transaction_id = datetime.datetime.now().timestamp()
     data = json.loads(request.body)

@@ -66,11 +66,19 @@
     </div>
 </div>
 
-<script src="https://www.paypal.com/sdk/js?client-id=AfGm8Gnr9RXCkWJW0jPEGLlNra3vCDCc-a7d_qu69khh-t8Oada-IoakK3d2Qkj_he898hWCXZ-J_kvs&currency=BRL&disable-funding=card"></script>
+<script src="https://www.paypal.com/sdk/js?client-id=AfGm8Gnr9RXCkWJW0jPEGLlNra3vCDCc-a7d_qu69khh-t8Oada-IoakK3d2Qkj_he898hWCXZ-J_kvs&currency=BRL&disable-funding=card"
+integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
 <script>
+function loadAsync(url, callback) {
+  var s = document.createElement('script');
+  s.setAttribute('src', url); s.onload = callback;
+  document.head.insertBefore(s, document.head.firstElementChild);
+}
+
     var total = '{{order.get_cart_total}}'
     // Render the PayPal button into #paypal-button-container
+    loadAsync('https://www.paypal.com/sdk/js?client-id=AfGm8Gnr9RXCkWJW0jPEGLlNra3vCDCc-a7d_qu69khh-t8Oada-IoakK3d2Qkj_he898hWCXZ-J_kvs&currency=BRL&disable-funding=card', function() {
     paypal.Buttons({
 
         // Set up the transaction
@@ -95,6 +103,7 @@
         }
 
     }).render('#paypal-button-container');
+    })
 </script>
 
 <script type="text/javascript">

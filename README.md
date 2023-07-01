@@ -126,3 +126,8 @@ https://www.youtube.com/watch?v=ovql0Ui3n_I
 
 ### My Store
 ![](website_status/my_store.png)
+
+##
+pip3 install djangorestframework
+##
+pip3 install requests

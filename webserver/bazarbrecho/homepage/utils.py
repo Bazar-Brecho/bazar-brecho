@@ -6,7 +6,7 @@ def cookie_cart(request):
 
     try:
         cart = json.loads(request.COOKIES["cart"])
-    except:
+    except Exception:
         cart = {}
 
     print("Cart from utils file:", cart)
@@ -32,7 +32,7 @@ def cookie_cart(request):
                 "get_total": total,
             }
             items.append(item)
-        except:
+        except Exception:
             pass
     return {"cart_items": cart_items, "order": order, "items": items}
 
